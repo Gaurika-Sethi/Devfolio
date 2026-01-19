@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  web:
+    container_name: devpilot-web
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_BASE_URL=http://api:8000
+    depends_on:
+      - api
+
+  api:
+    container_name: devpilot-api
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  mcp-server:
+    container_name: devpilot-mcp
+    build:
+      context: .
+      dockerfile: apps/mcp-server/Dockerfile
+    stdin_open: true
+    tty: true
