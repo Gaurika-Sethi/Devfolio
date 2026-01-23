@@ -1,0 +1,28 @@
+# dependencies
+node_modules
+**/node_modules
+
+# pnpm
+.pnpm-store
+.pnpm-debug.log
+
+# build outputs
+.next
+dist
+build
+.out
+
+# env files
+.env
+.env.*
+!.env.example
+
+# git
+.git
+.gitignore
+
+# turbo
+.turbo
+
+# misc
+*.log
